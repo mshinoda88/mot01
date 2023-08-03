@@ -33,9 +33,8 @@ RUN apt-get update
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN echo "Asia/Tokyo" > /etc/timezone
 
-RUN pwd
-#RUN git clone https://github.com/Kazuhito00/yolox-bytetrack-mcmot-sample && cd yolox-bytetrack-mcmot-sample
-#RUN wget https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx -P model
+RUN git clone https://github.com/Kazuhito00/yolox-bytetrack-mcmot-sample && cd yolox-bytetrack-mcmot-sample
+RUN wget https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx -P model
 
 COPY app  ${ENV_DIR_WEBAPP}
 
