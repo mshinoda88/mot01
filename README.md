@@ -14,6 +14,12 @@
 
 ```
 $ bash ctrl-container.sh build
+
+ファイルのコピー
+$ cp app/bytetrack/tracker/byte_tracker.py yplox-bytetrack-mcmot-sample/bytetrack/tracker/byte_tracker.py
+$ cp app/bytetrack/tracker/matching.py yplox-bytetrack-mcmot-sample/bytetrack/tracker/matching.py
+$ cp builder_cpython/bbox.cpython-310-x86_64-linux-gnu.so yplox-bytetrack-mcmot-sample/
+
 ```
 
 以下のコマンドでコンテナの起動、内部へログインが可能
