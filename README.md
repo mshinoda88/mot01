@@ -26,9 +26,14 @@ $ bash ctrl-container.sh login
 ## トラッキング結果動画の生成
 コンテナの中で以下を実行
 
+- 入力ファイル：XX.mp4
+- 出力ファイル：XX_tracked.webm
+
 ```
 (container)$ cd /usr/src/app/yolox-bytetrack-mcmot-sample
 (container)$ bash exec01.sh
+--movie ./test.mp4　のように、入力動画ファイルのパスを指定すると、
+**_tracked.webm の名前の出力ファイルが作成される。
 ```
 
 ```exec01.sh
