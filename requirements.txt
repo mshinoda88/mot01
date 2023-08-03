@@ -1,0 +1,6 @@
+numpy
+opencv-python
+onnxruntime
+lap
+#cython_bbox
+scipy
