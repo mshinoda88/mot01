@@ -14,7 +14,7 @@ libncursesw5-dev libssl-dev libsqlite3-dev libgdbm-dev libbz2-dev liblzma-dev zl
 RUN apt-get install -y libgl1-mesa-dev libglib2.0-0
 
 # install Python3 and etc
-RUN apt-get install -y python3.9 python3-pip git wget vim
+RUN apt-get install -y python3.11 python3-pip git wget vim
 
 COPY requirements.txt  ${ENV_DIR_WEBAPP}
 RUN pip3 install --upgrade pip
@@ -33,7 +33,8 @@ RUN apt-get update
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN echo "Asia/Tokyo" > /etc/timezone
 
-RUN git clone https://github.com/Kazuhito00/yolox-bytetrack-mcmot-sample && cd yolox-bytetrack-mcmot-sample
+#RUN git clone https://github.com/Kazuhito00/yolox-bytetrack-mcmot-sample && cd yolox-bytetrack-mcmot-sample
+RUN cd yolox-bytetrack-mcmot-sample
 RUN wget https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx -P model
 
 COPY app  ${ENV_DIR_WEBAPP}
