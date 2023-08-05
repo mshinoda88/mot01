@@ -1,21 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import copy
+#import copy
 import time
-
-#import cv2
-#import numpy as np
-#import os
 
 from ObjectDetector import MovieContext,ObjectDetector
 from ObjectTracker import ObjectTracker
 from VideoWriter import VideoWriter
-
-class dict_dot_notation(dict):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.__dict__ = self
-
 
 def main():
     ## 引数解析 ##
@@ -44,7 +34,7 @@ def main():
         ret, frame = video_writer.read_cap()
         if not ret:
             break
-        debug_image = copy.deepcopy(frame)
+        #debug_image = copy.deepcopy(frame)
 
         # Object Detection
         bboxes, scores, class_ids = detector.infer(frame)
@@ -56,7 +46,7 @@ def main():
 
         # デバッグ描画
         debug_image = video_writer.draw_debug(
-            debug_image,
+            frame,
             elapsed_time,
             detector.score_th,
             t_ids,
@@ -68,12 +58,10 @@ def main():
         )
 
 
-    video_writer.close()
-
     # トラッキングID単位の動画
-    video_writer.write_track_id_wise_video(
-        obj_tracker.track_id_frames, 
-        cap_fps)
+    #video_writer.write_track_id_wise_video(
+    #    obj_tracker.track_id_frames, 
+    #    cap_fps)
 
 
 

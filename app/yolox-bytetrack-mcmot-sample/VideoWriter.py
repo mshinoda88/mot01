@@ -14,6 +14,13 @@ class VideoWriter(object):
         self.cap_fps = cap.get(cv2.CAP_PROP_FPS)
         self.coco_classes = classes
 
+        # フォーマット・解像度・FPSの取得
+        fourcc = decode_fourcc(cap.get(cv2.CAP_PROP_FOURCC))
+        width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        print("fourcc:{} fps:{}　width:{}　height:{}".format(fourcc, fps, width, height))
+
         # 出力ファイル
         if args.movie is not None:
             self.outpath = os.path.splitext(args.movie)[0] + "_tracked.webm"
@@ -155,6 +162,11 @@ class VideoWriter(object):
                                 cv2.BORDER_CONSTANT, (0, 0, 0))
                 writer.write(frame_pad)
             writer.release()
+
+
+def decode_fourcc(v):
+        v = int(v)
+        return "".join([chr((v >> 8 * i) & 0xFF) for i in range(4)])
 
 
 def get_id_color(index):
